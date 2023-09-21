@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Girasol</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+	<style>
+		body {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+		}
+		canvas {
+			display: block;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function setup() {
+			createCanvas(400, 400);
+			background(0);
+			textSize(12);
+			fill(255);
+			textAlign(LEFT);
+			text("TE QUIERO MUCHO", -180, 250);
+			speed(20);
+			h = 0;
+			// Dibujar el tallo verde del girasol
+			fill(0, 255, 0);
+			beginShape();
+			vertex(0, -100);
+			vertex(0, 300);
+			vertex(20, 300);
+			vertex(20, -100);
+			endShape(CLOSE);
+			// Dibujar el girasol
+			for (i = 0; i < 16; i++) {
+				for (j = 0; j < 18; j++) {
+					fill(255, 255, 0); // Change fill color to yellow
+					h += 0.005;
+					push();
+					translate(width / 2, height / 2);
+					rotate(i * 22.5);
+					translate(j * 6, 0);
+					ellipse(150, 0, 30, 150 - j * 6);
+					pop();
+				}
+			}
+			// Colorear el centro de marrón
+			fill(139, 69, 19);
+			ellipse(0, 0, 80, 80);
+		}
+
+		function keyTyped() {
+			if (key === 'd') {
+				background(255, 0, 0); // Change background color to red
+			}
+		}
+	</script>
+</body>
+</html>
